@@ -26,10 +26,11 @@ class LoginController {
             $user = $this->model->getUser($email);
          
             
-            if($user && password_verify($userPassword, $user->password)){
-              /*   $_SESSION['logueado']= true;
-                $_SESSION['username'] = $userEmail; */
-                $this->view->showHome();
+            if($user && password_verify($password, $user->password)){
+                session_start();
+                $_SESSION["email"] = $email;
+
+                $this->view->showTask();
             } else {
                 $this->view->showLogin("Acceso Denagado");
             }
