@@ -3,8 +3,8 @@
     RewriteCond %{REQUEST_FILENAME} -f [OR]
     RewriteCond %{REQUEST_FILENAME} -d
 
-    RewriteRule ^api/(.*)$ route.php?resource=$1 [QSA,L,END]
     RewriteRule \.(?:css|js|jpe?g|gif|png)$ - [L]
+    RewriteRule ^api/(.*)$ router-api.php?resource=$1 [QSA,L,END]
     RewriteRule ^(.*)$ route.php?action=$1 [QSA,L]
 
 </ifModule>
