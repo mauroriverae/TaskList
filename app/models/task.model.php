@@ -45,10 +45,10 @@ class TaskModel {
         $query = $this->db->prepare("UPDATE tareas SET finalizada=1 WHERE id_tarea=?");
         $query->execute(array($id));
     }
-
+    
     function getTask($id) {
-        $query = $this->db->prepare("UPDATE tareas SET finalizada=1 WHERE id_tarea=?");
-        $query->excute([$id]);
+        $query = $this->db->prepare("SELECT * FROM tareas WHERE id_tarea=?");
+        $query->execute(array($id));
         $task = $query->fetch(PDO::FETCH_OBJ);
         return $task;
     }

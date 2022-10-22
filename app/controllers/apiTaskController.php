@@ -17,10 +17,11 @@ class ApiTaskController {
         return $this -> view-> response($tareas, 200);
 
     }
+    
     function getTask($params = []){
-        $idTareas = $params = [':ID'];
-        $tareas = $this-> model -> $getTask($idTareas);
-        return $this -> view-> response($tareas, 200);
+        $idTarea = $params[":ID"];
+        $tarea = $this->model->getTask($idTarea);
+        return $this -> view-> response($tarea, 200);
     }
 }
 
