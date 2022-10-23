@@ -5,9 +5,11 @@
     $router = new Router();
 
     // define la tabla de ruteo
-    $router->addRoute('tareas', 'GET', 'apiTaskController', 'getTasks'); //endpoint
+    //endpoint
+    $router->addRoute('tareas', 'GET', 'apiTaskController', 'getTasks'); 
     $router->addRoute('tareas/:ID', 'GET', 'apiTaskController', 'getTask');
     $router->addRoute('tareas/:ID', 'DELETE', 'apiTaskController', 'deleteTask');
+    $router->addRoute('tareas', 'POST', 'apiTaskController', 'addTask');
     // con los dos puntos indico que es un parametro y no que es parte del string
     //cambia el bervo entocnes cambia a donde voy
     // rutea
