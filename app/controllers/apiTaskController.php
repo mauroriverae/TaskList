@@ -21,7 +21,23 @@ class ApiTaskController {
     function getTask($params = []){
         $idTarea = $params[":ID"];
         $tarea = $this->model->getTask($idTarea);
-        return $this -> view-> response($tarea, 200);
+        if($tarea) {
+            return $this -> view-> response($tarea, 200);
+        } else{
+            return $this -> view-> response("La tarea con el id = $idTarea no existe", 404);
+        }
+    }
+    function deleteTask($params = null){
+        $idTarea = $params[":ID"];
+        $tarea = $this->model->getTask($idTarea);
+        if($tarea){
+            $this->model->deleteTaskById($idTarea);
+            return $this -> view-> response("La tarea $idTarea borrada con exito", 200);
+        } else {
+            $this->view->response("No se puede borrar id $idTarea , no existe", 404);
+        }
+       
+
     }
 }
 
