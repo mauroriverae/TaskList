@@ -41,6 +41,12 @@ class TaskModel {
         $query->execute([$id]);
     }
 
+    function update($id, $titulo, $descripcion, $prioridad, $finalizada){
+        //cuando bindeo parametros van en orden, Exactamente el mismo orden, por eso el id al final en el execute
+        $query = $this->db->prepare("UPDATE tareas SET titulo=?, descripcion=?, prioridad=?, finalizada=? WHERE id_tarea=?");
+        $query->execute(array($titulo, $descripcion, $prioridad, $finalizada, $id));
+    }
+    
     function updateTaskFromDB($id){
         $query = $this->db->prepare("UPDATE tareas SET finalizada=1 WHERE id_tarea=?");
         $query->execute(array($id));

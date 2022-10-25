@@ -48,7 +48,7 @@ class ApiTaskController {
             if($id != 0){
                 $this->view->response("la tarea se inserto con exito id = $id", 200);
             } else {
-                $this->view->response("la tarea no se inserto con exito id ", 500);
+                $this->view->response("la tarea no se inserto con exito id", 500);
             }
         } else {
             $this->view->response("Faltan datos ", 500);
@@ -61,16 +61,15 @@ class ApiTaskController {
     }
 
     function updateTask($params = null){
+        $idTarea = $params[':ID'];
         $body = $this->getBody();
-        if(isset($body->titulo, $body->descripcion, $body->prioridad)){
-            $id = $this->model->updateTaskFromDB($body->titulo, $body->descripcion, $body->prioridad);
-            if($id != 0){
-                $this->view->response("la tarea se inserto con exito id = $id", 200);
-            } else {
-                $this->view->response("la tarea no se inserto con exito id ", 500);
-            }
+        
+        $tarea = $this->model->getTask($idTarea);
+        if ($tarea) {
+            $this->model->update($idTarea, $body->titulo, $body->descripcion, $body->prioridad, $body->finalizada);
+            $this->view->response("la tarea se actualizo con exito id = $idTarea", 200);
         } else {
-            $this->view->response("Faltan datos ", 500);
+            return $this -> view-> response("La tarea con el id = $idTarea no existe", 404);
         }
 
     }
