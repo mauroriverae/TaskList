@@ -43,14 +43,35 @@ class ApiTaskController {
         // obtengo el body del request
         $body = $this->getBody();
         // falta hacer validaciones de que los campos no vengan vacios, en caso vacio 400(bad reques)
-        $this->model->insertTask($body->titulo, $body->descripcion, $body->prioridad);
-        $this->view->response("la tarea se inserto con exito", 200);
+        if(isset($body->titulo, $body->descripcion, $body->prioridad)){
+            $id = $this->model->insertTask($body->titulo, $body->descripcion, $body->prioridad);
+            if($id != 0){
+                $this->view->response("la tarea se inserto con exito id = $id", 200);
+            } else {
+                $this->view->response("la tarea no se inserto con exito id ", 500);
+            }
+        } else {
+            $this->view->response("Faltan datos ", 500);
+        }
     }
-    // corto en 1hs 17  clase 10/21
+
     private function getBody() {
         $bodyString = file_get_contents("php://input");
         return json_decode($bodyString);
     }
-}
 
-//minuto 1hs 05 javi
+    function updateTask($params = null){
+        $body = $this->getBody();
+        if(isset($body->titulo, $body->descripcion, $body->prioridad)){
+            $id = $this->model->updateTaskFromDB($body->titulo, $body->descripcion, $body->prioridad);
+            if($id != 0){
+                $this->view->response("la tarea se inserto con exito id = $id", 200);
+            } else {
+                $this->view->response("la tarea no se inserto con exito id ", 500);
+            }
+        } else {
+            $this->view->response("Faltan datos ", 500);
+        }
+
+    }
+}

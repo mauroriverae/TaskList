@@ -10,6 +10,7 @@
     $router->addRoute('tareas/:ID', 'GET', 'apiTaskController', 'getTask');
     $router->addRoute('tareas/:ID', 'DELETE', 'apiTaskController', 'deleteTask');
     $router->addRoute('tareas', 'POST', 'apiTaskController', 'addTask');
+    $router->addRoute('tareas/:ID', 'PUT', 'apiTaskController', 'updateTask');
     // con los dos puntos indico que es un parametro y no que es parte del string
     //cambia el bervo entocnes cambia a donde voy
     // rutea
