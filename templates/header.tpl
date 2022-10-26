@@ -23,6 +23,9 @@
                   <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="">Home</a>                    
                   </li>
+                  <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="home-csr">Home CSR</a>                    
+                  </li>
                   <li>
                     <a class="nav-link bg-danger " href="logout">Logout</a>
                   </li>

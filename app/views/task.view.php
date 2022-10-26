@@ -25,4 +25,8 @@ class TaskView {
     function showLoginLocation(){
         header("location: " .BASE_URL."login");
     }
+
+    function showCSR() {
+        $this->smarty->display('templates/taskLayoutCSR.tpl');
+    }
 }

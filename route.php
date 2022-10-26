@@ -31,6 +31,9 @@ switch ($params[0]) {
     case 'home':
         $taskController->showTasks();
         break;
+    case 'home-csr':
+        $taskController->showHomeCSR();
+        break;
     case 'add':
         $taskController->addTask();
         break;

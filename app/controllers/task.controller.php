@@ -20,6 +20,10 @@ class TaskController {
         $this->view->showTasks($tareas);
     }
 
+    function showHomeCSR() {
+      
+        $this->view->showCSR();
+    }
     
     function addTask() {
         // TODO: validar entrada de datos
