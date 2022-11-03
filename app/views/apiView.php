@@ -14,6 +14,8 @@ class ApiView {
         $status = [
             200 => "OK",
             404 => "Not Found",
+            401 => "Unautorize",
+            403 => "Not found",
             500 => "Internal Server Error"
         ];
         return (isset($status[$code])) ? $status[$code] : $status[500];
