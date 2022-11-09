@@ -1,5 +1,6 @@
 "use strict ";
-const API_URL = "http://localhost/web2/taskList/TaskList/api/tareas";
+const API_URL = "api/tareas";
+
 
 async function getTareas(){
     try{
@@ -8,7 +9,7 @@ async function getTareas(){
         render(tareas);
     }
     catch(e) {
-        console.log(e)
+        console.log(e);
     }
 }
 
@@ -26,6 +27,7 @@ function render(tareas){
         lista.innerHTML += html;
     }
 }
+
 
 
 getTareas();

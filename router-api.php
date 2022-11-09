@@ -1,6 +1,7 @@
 <?php
     require_once 'libs/Router.php';
     require_once 'app/controllers/apiTaskController.php';
+    require_once 'app/controllers/authapiTaskController.php';
     // crea el router
     $router = new Router();
 
@@ -13,7 +14,11 @@
     $router->addRoute('tareas/:ID', 'PUT', 'apiTaskController', 'updateTask');
     // con los dos puntos indico que es un parametro y no que es parte del string
     //cambia el bervo entocnes cambia a donde voy
+    
+    //logg
+    $router-> addRoute('user/:token', 'GET', 'authapiTaskController', 'getToken');
 
-    $router-> addRoute("auth/:token", "GET", 'auth_apiTaskController', 'getToken');
+
+
     // rutea
     $router->route($_GET["resource"], $_SERVER['REQUEST_METHOD']);
